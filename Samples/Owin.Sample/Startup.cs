@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Web.Http;
+using System.Xml;
 using Metrics;
 using Metrics.Endpoints;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin.Metrics;
+using Formatting = Newtonsoft.Json.Formatting;
 
 namespace Owin.Sample
 {
     public class Startup
     {
 
-        public void Configuration(IAppBuilder app)
+        public void Configuration(IApplicationBuilder app)
         {
             JsonConvert.DefaultSettings = () => new JsonSerializerSettings
             {
@@ -21,7 +25,7 @@ namespace Owin.Sample
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
 
-            app.UseCors(CorsOptions.AllowAll);
+            app.UseCors(c => c.AllowAnyOrigin());
 
             var httpconfig = new HttpConfiguration();
             httpconfig.MapHttpAttributeRoutes();
@@ -43,7 +47,7 @@ namespace Owin.Sample
                         .WithEndpointReport("/test", (d, h, r) => new MetricsEndpointResponse("test", "text/plain")))
                 );
 
-            app.UseWebApi(httpconfig);
+            app.UseMvc();
         }
 
     }
