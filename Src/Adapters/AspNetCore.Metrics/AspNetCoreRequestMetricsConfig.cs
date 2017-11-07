@@ -13,7 +13,7 @@ namespace AspNetCore.Metrics
         private readonly Action<Func<HttpContext, Func<Task>, Task>> middlewareRegistration;
         private readonly Regex[] ignoreRequestPathPatterns;
 
-        public AspNetCoreRequestMetricsConfig(Action<object> middlewareRegistration, MetricsContext metricsContext, Regex[] ignoreRequestPathPatterns)
+        public AspNetCoreRequestMetricsConfig(Action<Func<HttpContext, Func<Task>, Task>> middlewareRegistration, MetricsContext metricsContext, Regex[] ignoreRequestPathPatterns)
         {
             this.middlewareRegistration = middlewareRegistration;
             this.metricsContext = metricsContext;

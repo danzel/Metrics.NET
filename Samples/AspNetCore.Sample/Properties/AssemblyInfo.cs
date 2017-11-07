@@ -1,15 +1,16 @@
-﻿//using System.Reflection;
-//using System.Runtime.CompilerServices;
-//using System.Runtime.InteropServices;
-// TODO: to csproj
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+//TODO: Migrate to csproj
 //// General Information about an assembly is controlled through the following 
 //// set of attributes. Change these attribute values to modify the information
 //// associated with an assembly.
-//[assembly: AssemblyTitle("Metrics.Samples")]
+//[assembly: AssemblyTitle("WebApi.Sample")]
 //[assembly: AssemblyDescription("")]
 //[assembly: AssemblyConfiguration("")]
 //[assembly: AssemblyCompany("")]
-//[assembly: AssemblyProduct("Metrics.Samples")]
+//[assembly: AssemblyProduct("WebApi.Sample")]
 //[assembly: AssemblyCopyright("Copyright ©  2014")]
 //[assembly: AssemblyTrademark("")]
 //[assembly: AssemblyCulture("")]
@@ -20,7 +21,7 @@
 //[assembly: ComVisible(false)]
 //
 //// The following GUID is for the ID of the typelib if this project is exposed to COM
-//[assembly: Guid("a9f34801-2970-4957-a69c-17b549fb5ae8")]
+//[assembly: Guid("4118530f-7ae9-4639-b9ce-6e64c404ea8f")]
 //
 //// Version information for an assembly consists of the following four values:
 ////

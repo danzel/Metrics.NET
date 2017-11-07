@@ -9,13 +9,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Src\Adapters\Owin.Metrics\Owin.Metrics.csproj">
-      <Project>{025CD6D0-1A1E-4B14-A7DB-AF5DFF887210}</Project>
-      <Name>Owin.Metrics</Name>
+    <ProjectReference Include="..\..\Src\Adapters\AspNetCore.Metrics\AspNetCore.Metrics.csproj">
+      <Project>{8AD2C970-EC7F-405B-B267-9F0C1AAD7CC4}</Project>
+      <Name>AspNetCore.Metrics</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Src\Metrics\Metrics.csproj">
       <Project>{95E29D40-DBEC-49E2-9CC5-26B88966DADE}</Project>

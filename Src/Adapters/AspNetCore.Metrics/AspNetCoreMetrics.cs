@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Metrics;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +20,7 @@ namespace AspNetCore.Metrics
         /// <param name="config">Chainable configuration object.</param>
         /// <param name="middlewareRegistration">Action used to register middleware. This should generally be app.Use(middleware)</param>
         /// <returns>Chainable configuration object.</returns>
-        public static MetricsConfig WithAspNetCore(this MetricsConfig config, Action<object> middlewareRegistration)
+        public static MetricsConfig WithAspNetCore(this MetricsConfig config, Action<Func<HttpContext, Func<Task>, Task>> middlewareRegistration)
         {
             return config.WithAspNetCore(middlewareRegistration, owin =>
                 owin.WithRequestMetricsConfig());
@@ -34,7 +35,7 @@ namespace AspNetCore.Metrics
         /// <param name="middlewareRegistration">Action used to register middleware. This should generally be app.Use(middleware)</param>
         /// <param name="aspNetCoreConfig">Action used to configure AspNetCore metrics.</param>
         /// <returns>Chainable configuration object.</returns>
-        public static MetricsConfig WithAspNetCore(this MetricsConfig config, Action<object> middlewareRegistration, Action<AspNetCoreMetricsConfig> aspNetCoreConfig)
+        public static MetricsConfig WithAspNetCore(this MetricsConfig config, Action<Func<HttpContext, Func<Task>, Task>> middlewareRegistration, Action<AspNetCoreMetricsConfig> aspNetCoreConfig)
         {
             var aspNetCore = config.WithConfigExtension((ctx, hs) => 
                 new AspNetCoreMetricsConfig(middlewareRegistration, ctx, hs), () => AspNetCoreMetricsConfig.Disabled);

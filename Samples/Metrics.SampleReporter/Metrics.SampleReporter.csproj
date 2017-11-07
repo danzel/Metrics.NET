@@ -3,4 +3,22 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\Metrics\Metrics.csproj">
+      <Project>{95E29D40-DBEC-49E2-9CC5-26B88966DADE}</Project>
+      <Name>Metrics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Properties\**" />
+  </ItemGroup>
 </Project>

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using Metrics.Samples;
 using Metrics.Utils;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Owin.Sample
+namespace AspNetCore.Sample
 {
     public class Program
     {
@@ -22,7 +19,7 @@ namespace Owin.Sample
                     .UseUrls(url)
                     .Build())
                 {
-                    Console.WriteLine("Owin Running at {0}", url);
+                    Console.WriteLine("AspNetCore Running at {0}", url);
                     Console.WriteLine("Press any key to exit");
                     //Process.Start(string.Format("{0}metrics/", url));
 

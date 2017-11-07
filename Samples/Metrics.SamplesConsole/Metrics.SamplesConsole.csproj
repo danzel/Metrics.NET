@@ -3,4 +3,14 @@
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\Metrics\Metrics.csproj">
+      <Project>{95E29D40-DBEC-49E2-9CC5-26B88966DADE}</Project>
+      <Name>Metrics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Metrics.Samples\Metrics.Samples.csproj">
+      <Project>{D08A63D0-F440-477C-9565-1264AE0879D0}</Project>
+      <Name>Metrics.Samples</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

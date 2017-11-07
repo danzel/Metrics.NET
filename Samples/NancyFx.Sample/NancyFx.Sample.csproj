@@ -3,4 +3,24 @@
     <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-clinteastwood" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Src\Adapters\Nancy.Metrics\Nancy.Metrics.csproj" />
+    <ProjectReference Include="..\Metrics.Samples\Metrics.Samples.csproj">
+      <Project>{D08A63D0-F440-477C-9565-1264AE0879D0}</Project>
+      <Name>Metrics.Samples</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Properties\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Properties\**" />
+  </ItemGroup>
 </Project>

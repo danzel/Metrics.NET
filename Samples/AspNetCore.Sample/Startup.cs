@@ -1,15 +1,14 @@
-﻿using System;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using AspNetCore.Metrics;
 using Metrics;
 using Metrics.Endpoints;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Owin.Metrics;
 using Formatting = Newtonsoft.Json.Formatting;
 
-namespace Owin.Sample
+namespace AspNetCore.Sample
 {
     public class Startup
     {
@@ -31,10 +30,10 @@ namespace Owin.Sample
             
             Metric.Config
                 //.WithReporting(r => r.WithConsoleReport(TimeSpan.FromSeconds(30)))
-                .WithOwin(
-                    middleware => app.UseOwin(x => x(middleware)), 
+                .WithAspNetCore(
+                    middleware => app.Use(middleware), 
                     config => config
-                        .WithRequestMetricsConfig(c => c.WithAllOwinMetrics(), new[]
+                        .WithRequestMetricsConfig(c => c.WithAllAspNetCoreMetrics(), new[]
                         {
                             new Regex("(?i)^sampleignore"),
                             new Regex("(?i)^metrics"),
