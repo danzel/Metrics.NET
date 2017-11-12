@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using log4net;
 using log4net.Appender;
 using log4net.Config;
@@ -53,7 +54,7 @@ namespace Metrics.SampleReporter
 
         public ILog GetLogger(string loggerName, string csvHeader, string fileName)
         {
-            var logger = LogManager.GetLogger(loggerName);
+            var logger = LogManager.GetLogger(typeof(RuntimeConfiguredCsvRollingLogger).Assembly, loggerName);
 
             var myLogger = ((Logger)logger.Logger);
 
@@ -82,7 +83,7 @@ namespace Metrics.SampleReporter
 
             appender.ActivateOptions();
             myLogger.AddAppender(appender);
-            BasicConfigurator.Configure(appender);
+            BasicConfigurator.Configure(LogManager.GetRepository(typeof(RuntimeConfiguredCsvRollingLogger).Assembly), appender);
         }
     }
 }
