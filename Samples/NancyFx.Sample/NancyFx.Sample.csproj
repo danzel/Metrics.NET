@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
     <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Nancy.Hosting.Self" Version="2.0.0-clinteastwood" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Src\Adapters\Nancy.Metrics\Nancy.Metrics.csproj" />
