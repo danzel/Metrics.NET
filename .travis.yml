@@ -1,21 +1,17 @@
-language: objective-c
+os: osx
+osx_image: xcode9.1
+language: csharp
+mono: 5.4.0
 
 branches:
   except:
     - net40
-env:
- global:
-  - EnableNuGetPackageRestore=true
- matrix:
-  - MONO_VERSION="4.2.0.114"
-before_install:
- - wget "http://download.mono-project.com/archive/4.2.0/macos-10-x86/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg"
- - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.x86.pkg" -target /
-
 script:
- - mono .nuget/NuGet.exe restore Metrics.sln 
- - xbuild Metrics.Sln /p:Configuration="Debug"
- - xbuild Metrics.Sln /p:Configuration="Release"
+ - wget "https://download.microsoft.com/download/7/3/A/73A3E4DC-F019-47D1-9951-0453676E059B/dotnet-sdk-2.0.2-osx-x64.pkg"
+ - sudo installer -pkg "dotnet-sdk-2.0.2-osx-x64.pkg" -target /
+ - nuget restore
+ - msbuild Metrics.Sln /p:Configuration="Debug"
+ - msbuild Metrics.Sln /p:Configuration="Release"
  - cp ./bin/Release/Tests/xunit.*.dll ./
  # - mono ./packages/xunit.runner.console.2.0.0/tools/xunit.console.exe ./bin/Debug/Tests/Metrics.Tests.dll -maxthreads 1
  # - mono ./packages/xunit.runner.console.2.0.0/tools/xunit.console.exe ./bin/Release/Tests/Metrics.Tests.dll -maxthreads 1
